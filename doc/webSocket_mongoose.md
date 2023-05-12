@@ -86,5 +86,90 @@ if(c==NULL)
 #### 2.2.`mg_ws_upgrade()`
 
 ```cpp
-
+/*
+功能：
+	将一个已建立的HTTP连接升级为WebSocket。fmt是在WebSocket握手中返回给client的额外的HTTP请求头。如果不需要传输额外的HTTP请求头将fmt置为NULL
+函数参数：
+	c	要升级的HTTP连接
+	hm	HTTP报文
+	fmt	额外的HTTP请求头
+*/
+void mg_wd_upgrade(struct mg_connection* c, struct mg_http_message* hm, const char* fmt, ...);
 ```
+
+
+
+使用示例：
+
+```cpp
+void fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data) {
+  if (ev == MG_EV_HTTP_MSG) {
+    struct mg_http_message *hm = (struct mg_http_message *) ev_data;
+    mg_ws_upgrade(c, hm, NULL);  //将HTTP连接升级为WebSocket连接
+  }
+}
+```
+
+
+
+#### 2.3. `mg_ws_send()`
+
+```cpp
+/*
+功能：
+	发送数据给通信对端
+函数参数：
+	c	ws连接
+	buf	要发送的数据
+	len	数据大小
+	op	WebSocket报文类型
+返回值：
+	成功发送的字节数
+*/
+size_t mg_ws_send(struct mg_connection *c, const void *buf, size_t len, int op);
+```
+
+
+
+使用示例：
+
+```cpp
+// Mongoose events handler
+void fn(struct mg_connection *c, int ev, void *ev_data, void *fn_data) {
+  if (ev == MG_EV_WS_OPEN) {
+    struct mg_http_message *hm = (struct mg_http_message *) ev_data;
+    mg_ws_send(c, "opened", 6, WEBSOCKET_OP_BINARY);  // Send "opened" to web socket connection
+  }
+}
+```
+
+
+
+#### 2.4. `mg_ws_printf(), ms_ws_vprintf()`
+
+```cpp
+/*
+功能：
+	与mg_ws_sen()相同，但是使用printf()的输入格式
+*/
+size_t mg_ws_printf(struct mg_connection *, int op, const char *fmt, ...);
+size_t mg_ws_vprintf(struct mg_connection *, int op, const char *fmt, va_list *);
+```
+
+使用示例
+
+```cpp
+mg_ws_printf(c, WEBSOCKET_OP_TEXT, "Hello, %s", "world");
+```
+
+
+
+#### 2.5. `mg_ws_wrap()`
+
+```cpp
+/*
+
+*/
+size_t mg_ws_wrap(struct mg_connection *c, size_t len, int op)
+```
+
