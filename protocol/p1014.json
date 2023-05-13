@@ -1,0 +1,9 @@
+{
+    "ProtocolCode":1014,
+    "Parameters":{
+        "DeviceId":"10010",
+        "FileName":"updateImage",
+        "Start":0,
+        "End":2047
+    }
+}

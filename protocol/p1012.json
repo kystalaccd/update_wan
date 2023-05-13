@@ -1,0 +1,11 @@
+{
+    "ProtocolCode":1012,
+    "Parameters":{
+        "FileName":"updateImage",
+        "FileSize":4096,
+        "DeviceId":"10010",
+        "DeviceType":"TX", 
+        "ProgVersion":"1.0.0",
+        "LoadCondition":0
+    }
+}

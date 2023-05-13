@@ -1,0 +1,8 @@
+{
+    "ProtocolCode":1010,
+    "Parameters":{
+        "DeviceId":"10001",
+        "DeviceType":"TS",
+        "ProgVersion":"200200"
+    }
+}

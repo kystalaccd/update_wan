@@ -1,0 +1,11 @@
+{
+    "ProtocolCode":1015,
+    "Parameters":{
+        "Status":0,
+        "FileName":"updateImage",
+        "Start":0,
+        "End":2047,
+        "Check":"1BC29B36F623BA82AAF6724FD3B16718",
+        "FileChunk":"***********************************************************************"
+    }
+}
