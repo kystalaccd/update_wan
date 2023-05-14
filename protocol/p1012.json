@@ -3,7 +3,7 @@
     "Parameters":{
         "FileName":"updateImage",
         "FileSize":4096,
-        "DeviceId":"10010",
+        "DeviceId":"10000",
         "DeviceType":"TX", 
         "ProgVersion":"1.0.0",
         "LoadCondition":0

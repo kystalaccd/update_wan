@@ -3,6 +3,9 @@
 
 #include <atomic>
 #include <map>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 #include "CJsonObject.hpp"
 #include "mongoose.h"
@@ -34,7 +37,7 @@ public:
     /**
      * @brief 构造函数
     */
-    basicInterface(const string& ip, short port, const string& savePath)
+    basicInterface(const string& ip="", short port=6007, const string& savePath=".")
         :_url{string("ws://"+ip+":"+to_string(port)).c_str()},
         _running{false},
         _mgr{0},
